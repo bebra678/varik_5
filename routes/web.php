@@ -32,4 +32,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/test', function (){
+        return view('test');
+    });
+});
+
 require __DIR__.'/auth.php';
